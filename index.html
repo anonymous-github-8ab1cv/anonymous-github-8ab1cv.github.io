@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Unleashing Generalization of End-to-End Autonomous Driving with Controllable Long Video Generation</title>
+  <title>Delphi</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -43,16 +43,182 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      /* background-color: #f5f5f5; */
+    }    
+    .container {
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    /* 内容块 */
+    .content-block {
+      padding: 20px;
+    }
+
+    /* 奇数内容块背景色为灰色 */
+    .content-block:nth-child(odd) {
+      background-color: #f0f0f0; /* 浅灰色 */
+    }
+
+    /* 偶数内容块背景色为白色 */
+    .content-block:nth-child(even) {
+      background-color: #ffffff; /* 白色 */
+    }
+
+    /* 图片展示区域 */
+    .image-display {
+      position: relative;
+      width: 100%;
+      /* 移除固定高度，让高度根据图片自动调整 */
+      border: 1px solid #ccc;
+      background-color: #fff;
+      overflow: hidden;
+    }
+
+    .image-display img {
+      width: 100%;
+      height: auto; /* 保持图片比例 */
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .image-display img.active {
+      display: block;
+      position: relative; /* 使图片在正常流中显示，避免绝对定位带来的覆盖问题 */
+    }
+
+    /* 滑动条容器 */
+    .slider-container {
+      margin-top: 20px;
+    }
+
+    /* 自定义滑动条样式 */
+    input[type="range"] {
+      -webkit-appearance: none; /* 移除默认样式 */
+      width: 100%;
+      height: 15px; /* 增加滑动条高度 */
+      background: #d3d3d3;
+      border-radius: 5px;
+      outline: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 针对Webkit浏览器（Chrome、Safari等） */
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px; /* 增大滑块大小 */
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+      margin-top: -5px; /* 使滑块垂直居中 */
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 15px;
+      cursor: pointer;
+      background: #d3d3d3;
+      border-radius: 5px;
+    }
+
+    /* 针对Firefox浏览器 */
+    input[type="range"]::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+    }
+
+    input[type="range"]::-moz-range-track {
+      height: 15px;
+      cursor: pointer;
+      background: #d3d3d3;
+      border-radius: 5px;
+    }
+
+    /* 针对IE浏览器 */
+    input[type="range"]::-ms-thumb {
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+    }
+
+    input[type="range"]::-ms-track {
+      height: 15px;
+      cursor: pointer;
+      background: transparent; 
+      border-color: transparent;
+      color: transparent;
+    }
+
+    input[type="range"]::-ms-fill-lower {
+      background: #d3d3d3;
+      border-radius: 5px;
+    }
+
+    input[type="range"]::-ms-fill-upper {
+      background: #d3d3d3;
+      border-radius: 5px;
+    }
+
+    /* 为滑动条添加过渡效果（可选） */
+    input[type="range"] {
+      transition: background 0.3s;
+    }
+
+    input[type="range"]:hover {
+      background: #c0c0c0;
+    }
+    /* 响应式图片展示优化 */
+    @media (max-width: 600px) {
+      .image-display {
+        border: none; /* 移除边框，节省空间 */
+      }
+    }
+  
+  .image-display img {
+    transition: opacity 0.5s ease;
+    opacity: 0;
+  }
+
+  .image-display img.active {
+    opacity: 1;
+    position: relative;
+  }
+
+  </style>
+
 </head>
 <body>
 
 
-  <section class="hero">
+  <section class="hero content-block">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Unleashing Generalization of End-to-End Autonomous Driving with Controllable Long Video Generation</h1>
+            <!-- <h1 class="title is-1 publication-title">Unleashing Generalization of End-to-End Autonomous Driving with Controllable Long Video Generation</h1> -->
+            <h1 class="title is-1 publication-title">Delphi: Highly Controllable World Model for Unleashing Generalization of End-to-End Autonomous Driving</h1>
             <!-- <div class="is-size-5 publication-authors"> -->
               <!-- Paper authors -->
               <!-- <span class="author-block">
@@ -66,7 +232,7 @@
 
                   <div class="is-size-5 publication-authors">
                     <!-- <span class="author-block">Institution Name<br>Conferance name and year</span> -->
-                    <span class="author-block">NeurIPS 2024 Anonymous Submission</span>
+                    <span class="author-block">ICLR 2025 Anonymous Submission</span>
                     <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
 
@@ -125,15 +291,14 @@
 
 
 <!-- Teaser video-->
-<section class="hero teaser">
+<section class="hero  content-block">
   <div class="container is-max-desktop">
     <!-- <div class="hero-body"> -->
+      <h2 class="title is-3">Method Overview</h2>
     <div class="item">
       <img src="static/images/teaser.png" alt="MY ALT TEXT" />
       <h2 style="font-size: 18px" class="subtitle has-text-centered">
-        <b>Overview of our method.
-          <!-- <br> -->
-        </b> We show that <b>(a)</b> our <i>Delphi</i> can generate up to 40 frames consecutive videos while <b>(b)</b> existing best only generate 8 frames. <b>(c)</b> With the failure-cased driven framework equipped with <i>Delphi</i>, <b>(d)</b> we can significantly boost the end-to-end model performance with much smaller cost.
+        We show that <b>(a)</b> our <i>Delphi</i> can generate up to 40 frames consecutive videos while <b>(b)</b> existing best only generate 8 frames. <b>(c)</b> With the failure-cased driven framework equipped with <i>Delphi</i>, <b>(d)</b> we can significantly boost the end-to-end model performance with much smaller cost.
       </h2>
     </div>
   </div>
@@ -159,7 +324,7 @@
 
 
 <!-- Image carousel -->
-<section class="hero is-small">
+<section class="hero content-block">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
@@ -212,71 +377,83 @@
 
 
 <!-- Video carousel -->
-<section class="hero is-small">
+<section class="hero content-block>
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Long video generation on nuScenes dataset</h2>
 
-      <div class="content has-text-justified">
-        <p>
-          Long videos generated by Delphi (up to 40 frames) on the nuScenes dataset. For readability, we play the video at 5x speed.
-        </p>
-      </div>
+
       <!-- <div id="results-carousel" class="carousel results-carousel"> -->
-        <div class="item item-video1">
+        <div class="item video-container">
           <video poster="" id="video1" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
-            <source src="static/videos/speed5_videos/file_v3_00bd_5363e497-7f41-4bfd-9330-cf9a65b2c9dg.mp4"
+            <source src="static/videos/sunny_1.mp4"
             type="video/mp4">
           </video>
         </div>
+        <div class="item">
+          <h2 class="subtitle has-text-centered">
+            📍Boston, ☀️sunny, 🔆daytime
+          </h2>
+        </div>
+
+
         <div class="item item-video2">
           <video poster="" id="video2" autoplay controls muted loop height="100%">
             <!-- Your video file here -->
-            <source src="static/videos/speed5_videos/modified_200_48ba943c3d19463a81281bf6a7078eac.mp4"
+            <source src="static/videos/sunny_2.mp4"
             type="video/mp4">
           </video>
         </div>
+        <div class="item">
+          <h2 class="subtitle has-text-centered">
+            📍Boston, ☀️sunny, 🔆daytime
+          </h2>
+        </div>
+
+
         <div class="item item-video3">
           <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <source src="static/videos/speed5_videos/modified_200_d6e6f5d622474271b695f4c7f07df7bb.mp4"
+            <source src="static/videos/sunny_3.mp4"
             type="video/mp4">
           </video>
         </div>
-        <div class="item item-video4">
+        <div class="item">
+          <h2 class="subtitle has-text-centered">
+            📍Boston, ☀️sunny, 🔆daytime
+          </h2>
+        </div>
+
+        
+        <div class="item item-video3">
           <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <source src="static/videos/speed5_videos/modified_200_e8bda599a2d44d76a7692caeacb1ba6e.mp4"
+            <source src="static/videos/rainy_3.mp4"
             type="video/mp4">
           </video>
         </div>
+        <div class="item">
+          <h2 class="subtitle has-text-centered">
+            📍Boston, 🌧️rainy, 🔆daytime
+          </h2>
+        </div>
+
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+            <source src="static/videos/night_3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <h2 class="subtitle has-text-centered">
+            📍Boston, ☀️sunny, 🌙night
+          </h2>
+        </div>
+        <!-- <div class="content has-text-justified">
+          
+        </div> -->
+
       <!-- </div> -->
 
-      <!-- <div class="content has-text-justified">
-        <p>
-          We compare the long video generation results with the state-of-the-art methods on the nuScenes dataset.
-        </p>
-      </div> -->
-
-      <!-- <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <source src="static/videos/cmp1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <source src="static/videos/cmp2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">
-            <source src="static/videos/cmp3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div> -->
     </div>
   </div>
 </section>
@@ -289,36 +466,46 @@
       <h2 class="title is-3">Precise controllability</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          
+
+          <!-- <div class="item">
+
+          </div> -->
           <div class="item">
+            <h2 class="subtitle has-text-centered">
+              1. Visual comparison of local region generated by different generative models. 
+              <!-- Our method maintains consistent spatial and temporal appearance where the previous methods fail. -->
+            </h2>
             <!-- Your image here -->
             <img src="static/images/results/visual conparison of local region.png" alt="MY ALT TEXT"/>
-            <h2 class="subtitle has-text-centered">
-              Visual comparison of local region generated by different generative models. Our method maintains consistent spatial and temporal appearance where the previous methods fail.
-            </h2>
+
           </div>
 
           <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/results/visual precise control.jpeg" alt="MY ALT TEXT"/>
+            
+          </div>
+          <div class="item"><br>
             <h2 class="subtitle has-text-centered">
-              Visualization of <b>(a)</b> instance-level editing, including appearance attributes of all vehicles, and  <b>(b)</b> scene-level editing, including weather and time.
+              2. Precise element editing, including instance-level editing and scene-level editing.
             </h2>
+            <!-- Your image here -->
+            <img src="static/images/results/visual_precise_control.png" alt="MY ALT TEXT"/>
+
           </div>
 
           <div class="content has-text-justified">
           </div>
           <!-- <div id="results-carousel" class="carousel results-carousel"> -->
             <div class="item item-video1">
+              <h2 class="subtitle has-text-centered">
+                3. GUI Interface for users to edit layout from scratch.
+              </h2>
               <video poster="" id="video1" autoplay controls muted loop height="100%">
                 <!-- Your video file here -->
                 <source src="static/videos/demo_layout_editing1.mp4"
                 type="video/mp4">
               </video>
 
-            <h2 class="subtitle has-text-centered">
-              We further showed that users can edit the generated content by easily editing the foreground layout and background road map. 
-            </h2>
+
             </div>
         </div>
       </div>
@@ -326,7 +513,7 @@
   </div>
 </section>
 
-<section class="hero is-small is-light">
+<section class="hero content-block">
   <div class="hero-body">
     <div class="container">
       <!-- Paper video. -->
@@ -335,19 +522,22 @@
         <div class="column is-four-fifths">
           
           <div class="item">
+            <h2 class="subtitle has-text-centered">
+              1. Performance comparison of the end-to-end models fine-tuned from the UniAD open source model by applying different data sampling strategies, numbers of data cases, data engines, and data sources in the failure-case driven framework.
+            </h2>
             <!-- Your image here -->
             <img src="static/images/downstream/Tab2.jpeg" alt="MY ALT TEXT"/>
-            <h2 class="subtitle has-text-centered">
-              Performance comparison of the end-to-end models fine-tuned from the UniAD open source model by applying different data sampling strategies, numbers of data cases, data engines, and data sources in the failure-case driven framework.The baseline performance is presented in the first row of the table.
-            </h2>
+
           </div>
           
-          <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/downstream/uniad generalization comparison.png" alt="MY ALT TEXT"/>
+          <div class="item"><br>
             <h2 class="subtitle has-text-centered">
-              Visualization of four examples before and after. <b>(a)</b> Here, we show four hard examples from the validation set, ''large objects in the front'' and ''unprotected left turn at intersection''. <b>(b)</b> Our framework is able to fix these four examples without using these data during training. 
+              
+              2. Visualization of four examples before and after. 
+              In the left, we show four hard examples from the validation set, ''large objects in the front'' and ''unprotected left turn at intersection''. In the right, our framework is able to fix these four examples without using these data during training. 
             </h2>
+            <!-- Your image here -->
+            <img src="static/images/downstream/uniad_generalization_comparison.png" alt="MY ALT TEXT"/>
           </div>
           
         </div>
@@ -361,12 +551,12 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Scaling up</h2>
+      <h2 class="title is-3">Generation results on other dataset</h2>
 
-      <div class="content has-text-justified">
-        <p>
-          By training on a private multi-view driving dataset (the training data is about 50 times larger than nuScenes), <i>Delphi</i> demonstrates interesting capabilities to generate up to 120 frames of spatiotemporally consistent videos. This fully demonstrates the scalability of our <i>Delphi</i>.
-        </p>
+      <div class="item">
+        <h2  class="subtitle has-text-centered">
+          We further demonstrate that <i>Delphi</i> generates spatiotemporally consistent long videos on another private dataset, which  demonstrates it's scalability.
+        </h2>
       </div>
 
       <!-- <div id="results-carousel" class="carousel results-carousel"> -->
@@ -382,12 +572,6 @@
             type="video/mp4">
           </video>
         </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" playsinline autoplay controls muted loop height="100%">
-            <source src="static/videos/liauto_3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
       <!-- </div> -->
     </div>
   </div>
@@ -396,83 +580,95 @@
 
 
 <!-- Video carousel -->
-<section class="hero is-small">
+<section class="hero content-block">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Application: visual renderer for closed-loop evaulation</h2>
+      <h2 class="title is-3">Application: visual renderer for closed-loop evaluation</h2>
 
-      <div class="content has-text-justified">
-        <p>
-          We note that <i>Delphi</i> can also be used as a data engine with photorealistic image generation capabilities and further supports closed-loop evaluation of end-to-end models such as UniAD. Here we show a demo of closed-loop evaluation on nuNcenes. The top row shows an open-loop evaluation scenario on nuNcenes: the ego car is driving at a constant speed. The bottom row shows a closed-loop evaluation scenario on nuNcenes using Delphi: the ego car is accelerating, resulting in a dangerous distance from the vehicle in front.
-        </p>
+      <div class="item">
+        <h2   class="subtitle has-text-centered">
+          <i>Delphi</i> can also be used as a data engine with photorealistic image generation capabilities and further supports closed-loop evaluation of end-to-end models such as UniAD. Here we show a demo of closed-loop evaluation on nuNcenes. The top row shows an open-loop evaluation scenario on nuNcenes: the ego car is driving at a constant speed. The bottom row shows a closed-loop evaluation scenario on nuNcenes using Delphi: the ego car is accelerating, resulting in a dangerous distance from the vehicle in front. 
+        </h2>
       </div>
-      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/close_loop.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      <!-- </div> -->
-
     </div>
   </div>
+
+
+<div class="container">
+
+  
+  <!-- 图片展示区域 -->
+  <div class="image-display" id="imageDisplay">
+    <!-- 示例图片，请根据实际情况替换图片路径 -->
+    <img src="static/images/frame_0001.png" class="active" alt="图片1">
+    <img src="static/images/frame_0002.png" alt="图片2">
+    <img src="static/images/frame_0003.png" alt="图片3">
+    <img src="static/images/frame_0004.png" alt="图片4">
+    <img src="static/images/frame_0005.png" alt="图片5">
+    <img src="static/images/frame_0006.png" alt="图片6">
+    <img src="static/images/frame_0007.png" alt="图片7">
+    <img src="static/images/frame_0008.png" alt="图片8">
+    <img src="static/images/frame_0009.png" alt="图片9">
+    <img src="static/images/frame_0010.png" alt="图片10">
+    <img src="static/images/frame_0011.png" alt="图片11">
+    <img src="static/images/frame_0012.png" alt="图片12">
+    <!-- 可以继续添加更多图片 -->
+  </div>
+  
+  <!-- 滑动条控制 -->
+  <div class="slider-container">
+    <input type="range" id="slider" min="0" max="4" step="1" value="0">
+  </div>
+  <h2>Drag the slider to see how the environment rendered by <i>Delphi</i> changes with the route planned by UniAD.</h2>
+</div>
+
+<script>
+  // 获取所有图片元素
+  const images = document.querySelectorAll('#imageDisplay img');
+  const slider = document.getElementById('slider');
+  
+  // 动态设置滑动条的最大值，根据图片数量
+  slider.max = images.length - 1;
+  
+  // 监听滑动条的输入事件
+  slider.addEventListener('input', function() {
+    const index = parseInt(this.value); // 获取当前滑动条的值并转为整数
+    images.forEach((img, i) => {
+      if (i === index) {
+        img.classList.add('active'); // 当前索引的图片显示
+      } else {
+        img.classList.remove('active'); // 其他图片隐藏
+      }
+    });
+  });
+</script>
+
 </section>
 <!-- End video carousel -->
 
-
-
-
-
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
-
-
-<!--BibTex citation -->
-  <!-- <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
-    </div>
-</section> -->
-<!--End BibTex citation -->
-
-
-  <!-- <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</footer> -->
 
 <!-- Statcounter tracking code -->
   
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
     <!-- End of Statcounter Code -->
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+    
+              <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+                This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   </body>
   </html>
